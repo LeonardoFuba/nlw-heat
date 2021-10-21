@@ -1,4 +1,6 @@
 import axios from "axios";
+import { sign } from "jsonwebtoken";
+import prismaClient from "../prisma";
 
 /**
  * Receber code(string)
@@ -45,7 +47,41 @@ const execute = async (code: string) => {
     }
   });
 
-  return data;
+  const { login, id, avatar_url, name } = data;
+
+  let user = await prismaClient.user.findFirst({
+    where: {
+      github_id: id
+    }
+  })
+
+  if(!user) {
+    user = await prismaClient.user.create({
+      data: {
+        name,
+        github_id: id,
+        avatar_url,
+        login,
+      }
+    })
+  }
+
+  const token = sign(
+    {
+      user: {
+        id: user.id,
+        name: user.name,
+        avatar_url: user.avatar_url,
+      }
+    },
+    process.env.JWT_SECRET,
+    {
+      subject: user.id,
+      expiresIn: "1d"
+    },
+  )
+
+  return { token, user };
 }
 
 export { execute };

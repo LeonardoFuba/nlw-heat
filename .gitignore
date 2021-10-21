@@ -4,6 +4,8 @@ coverage
 .env
 *.sqlite
 
+dev.db
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
