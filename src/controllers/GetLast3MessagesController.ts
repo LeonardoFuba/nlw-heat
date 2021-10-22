@@ -7,7 +7,7 @@ const handleGetLast3Messages = async (request: Request, response: Response) => {
 
     return response.json(result);
   } catch (error) {
-    response.json({ error: error.message });
+    return response.json({ error: error.message });
   }
 }
 
