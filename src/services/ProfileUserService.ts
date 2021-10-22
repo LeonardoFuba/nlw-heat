@@ -1,6 +1,6 @@
 import prismaClient from "../prisma";
 
-const execute = async (user_id: string) => {
+const executeGetUserProfile = async (user_id: string) => {
   const user = await prismaClient.user.findFirst({
     where: {
       id: user_id,
@@ -10,4 +10,4 @@ const execute = async (user_id: string) => {
   return user;
 }
 
-export { execute }
+export { executeGetUserProfile }

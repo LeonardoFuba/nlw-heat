@@ -1,12 +1,12 @@
 import { Request , Response } from "express";
-import { execute } from "../services/CreateMessageService";
+import { executeCreateMessages } from "../services/CreateMessageService";
 
 const handleCreateMessage = async (request: Request, response: Response) => {
   const { message } = request.body;
   const { user_id } = request;
 
   try {
-    const result = await execute(message, user_id);
+    const result = await executeCreateMessages(message, user_id);
 
     return response.json(result);
   } catch (error) {

@@ -1,6 +1,6 @@
 import prismaClient from "../prisma";
 
-const execute = async () => {
+const executeGet3LastMessages = async () => {
   const messages = await prismaClient.message.findMany({
     take: 3,
     orderBy: {
@@ -14,4 +14,4 @@ const execute = async () => {
   return messages;
 }
 
-export { execute }
+export { executeGet3LastMessages }

@@ -1,9 +1,9 @@
 import { Request , Response } from "express";
-import { execute } from "../services/GetLast3Messages";
+import { executeGet3LastMessages } from "../services/GetLast3Messages";
 
 const handleGetLast3Messages = async (request: Request, response: Response) => {
   try {
-    const result = await execute();
+    const result = await executeGet3LastMessages();
 
     return response.json(result);
   } catch (error) {

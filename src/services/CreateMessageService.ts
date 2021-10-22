@@ -1,7 +1,7 @@
 import prismaClient from "../prisma";
 import { io } from "../app";
 
-const execute = async (text: string, user_id: string) => {
+const executeCreateMessages = async (text: string, user_id: string) => {
   const message = await prismaClient.message.create({
     data: {
       text,
@@ -27,4 +27,4 @@ const execute = async (text: string, user_id: string) => {
   return message;
 }
 
-export { execute }
+export { executeCreateMessages }

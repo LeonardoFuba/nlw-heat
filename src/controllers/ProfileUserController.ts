@@ -1,11 +1,11 @@
 import { Request , Response } from "express";
-import { execute } from "../services/ProfileUserService";
+import { executeGetUserProfile } from "../services/ProfileUserService";
 
 const handleProfileUserController = async (request: Request, response: Response) => {
   const { user_id } = request;
 
   try {
-    const result = await execute(user_id);
+    const result = await executeGetUserProfile(user_id);
 
     return response.json(result);
   } catch (error) {

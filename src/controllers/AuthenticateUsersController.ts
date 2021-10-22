@@ -1,11 +1,11 @@
 import { Request , Response } from "express";
-import { execute } from "../services/AuthenticateUserService";
+import { executeAuthenticate } from "../services/AuthenticateUserService";
 
 const handleAuthenticateUser = async (request: Request, response: Response) => {
   const { code } = request.body;
 
   try {
-    const result = await execute(code);
+    const result = await executeAuthenticate(code);
     return response.json(result);
 
   } catch (error) {

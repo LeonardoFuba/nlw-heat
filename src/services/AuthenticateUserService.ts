@@ -25,7 +25,7 @@ interface IUserResponse {
   avatar_url: string;
 }
 
-const execute = async (code: string) => {
+const executeAuthenticate = async (code: string) => {
   const url = "https://github.com/login/oauth/access_token"
 
   const { data: accessTokenResponse } = await axios.post<IAccessTokenResponse>(
@@ -84,4 +84,4 @@ const execute = async (code: string) => {
   return { token, user };
 }
 
-export { execute };
+export { executeAuthenticate };
