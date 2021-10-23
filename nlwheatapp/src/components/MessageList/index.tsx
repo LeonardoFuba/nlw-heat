@@ -5,7 +5,9 @@ import { api } from '../../services/api';
 import { Message, MessageProps } from '../Message'
 import { styles } from './styles';
 
-const messagesQueue: MessageProps[] = [];
+import { MESSAGES_EXAMPLE } from '../../utils/messages'
+
+const messagesQueue: MessageProps[] = MESSAGES_EXAMPLE;
 const socket = io(String(api.defaults.baseURL));
 
 socket.on('new_message', (newMessage: MessageProps) => {
